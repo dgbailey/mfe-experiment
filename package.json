@@ -1,0 +1,26 @@
+{
+  "name": "sentry-mfe-demo",
+  "version": "1.0.0",
+  "description": "Sentry MFE demonstration project",
+  "private": true,
+  "workspaces": [
+    "host",
+    "remote",
+    "shared"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm run install:host && npm run install:remote && npm run install:shared",
+    "install:host": "cd host && npm install",
+    "install:remote": "cd remote && npm install",
+    "install:shared": "cd shared && npm install",
+    "dev": "concurrently \"npm run dev:host\" \"npm run dev:remote\"",
+    "dev:host": "cd host && npm run dev",
+    "dev:remote": "cd remote && npm run dev",
+    "build": "npm run build:remote && npm run build:host",
+    "build:host": "cd host && npm run build",
+    "build:remote": "cd remote && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
